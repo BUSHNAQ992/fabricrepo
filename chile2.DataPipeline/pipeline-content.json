@@ -3,6 +3,7 @@
     "activities": [
       {
         "name": "Wait1",
+        "description": "ss",
         "type": "Wait",
         "dependsOn": [],
         "typeProperties": {
