@@ -1,5 +1,21 @@
 {
   "properties": {
-    "activities": []
+    "activities": [
+      {
+        "name": "Wait1",
+        "type": "Wait",
+        "dependsOn": [],
+        "typeProperties": {
+          "waitTimeInSeconds": 1
+        }
+      }
+    ],
+    "libraryVariables": {
+      "Variables_1_var1": {
+        "type": "String",
+        "variableName": "var1",
+        "libraryName": "Variables_1"
+      }
+    }
   }
 }

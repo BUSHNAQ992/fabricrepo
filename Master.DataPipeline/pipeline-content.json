@@ -61,6 +61,13 @@
           }
         ]
       }
-    ]
+    ],
+    "libraryVariables": {
+      "Variables_1_var1": {
+        "type": "String",
+        "variableName": "var1",
+        "libraryName": "Variables_1"
+      }
+    }
   }
 }
