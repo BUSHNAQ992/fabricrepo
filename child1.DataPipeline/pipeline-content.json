@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 1
+        },
+        "name": "Wait1",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "07f719d8-b9a3-b055-488d-674bc670f85d",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "f044e8c8-a25c-4ad0-8669-617a1ecfd2e7"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Invoke pipeline1",
+        "dependsOn": [
+          {
+            "activity": "Wait1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "Wait",
+        "typeProperties": {
+          "waitTimeInSeconds": 1
+        },
+        "name": "Wait1",
+        "dependsOn": []
+      },
+      {
+        "type": "InvokePipeline",
+        "typeProperties": {
+          "parameters": {},
+          "waitOnCompletion": true,
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "pipelineId": "235c8fb7-653e-a328-4782-aced277ab997",
+          "operationType": "InvokeFabricPipeline"
+        },
+        "externalReferences": {
+          "connection": "f044e8c8-a25c-4ad0-8669-617a1ecfd2e7"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "Invoke pipeline1",
+        "dependsOn": [
+          {
+            "activity": "Wait1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "ad586e92-0b3e-bc70-423a-8992f2eefdb2",
+          "workspaceId": "00000000-0000-0000-0000-000000000000"
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "NotebookM",
+        "dependsOn": [
+          {
+            "activity": "Invoke pipeline1",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
